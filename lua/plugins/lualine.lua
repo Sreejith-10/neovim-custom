@@ -1,87 +1,109 @@
 -- Set lualine as statusline
 return {
-  'nvim-lualine/lualine.nvim',
-  config = function()
+	"nvim-lualine/lualine.nvim",
+	dependencies = {
+		"catppuccin/nvim",
+	},
+	config = function()
+		local hide_in_width = function()
+			return vim.fn.winwidth(0) > 100
+		end
 
-    local hide_in_width = function()
-      return vim.fn.winwidth(0) > 100
-    end
+		local mode = {
+			"mode",
+			fmt = function(str)
+				if hide_in_width() then
+					return " " .. str
+				else
+					return " " .. str:sub(1, 1) -- displays only the first character of the mode
+				end
+			end,
+		}
 
-    local mode = {
-      'mode',
-      fmt = function(str)
-        if hide_in_width() then
-          return ' ' .. str
-        else
-          return ' ' .. str:sub(1, 1) -- displays only the first character of the mode
-        end
-      end,
-    }
+		local filename = {
+			"filename",
+			file_status = true, -- displays file status (readonly status, modified status)
+			path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
+		}
 
-    local filename = {
-      'filename',
-      file_status = true, -- displays file status (readonly status, modified status)
-      path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
-    }
+		local diagnostics = {
+			"diagnostics",
+			sources = { "nvim_diagnostic" },
+			sections = { "error", "warn" },
+			symbols = { error = " ", warn = " ", info = " ", hint = " " },
+			color = {
+				hint = {
+					fg = "#98c379",
+				},
+				warn = {
+					fg = "#e5c07b",
+				},
+				error = {
+					fg = "#e06c75",
+				},
+				info = {
+					fg = "#4169e1",
+				},
+			},
+			colored = true,
+			update_in_insert = false,
+			always_visible = false,
+			cond = hide_in_width,
+		}
 
-    local diagnostics = {
-      'diagnostics',
-      sources = { 'nvim_diagnostic' },
-      sections = { 'error', 'warn' },
-      symbols = { error = ' ', warn = ' ', info = ' ', hint = ' ' },
-      colored = false,
-      update_in_insert = false,
-      always_visible = false,
-      cond = hide_in_width,
-    }
+		local diff = {
+			"diff",
+			colored = true,
+			symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+			color = {
+				added = {
+					fg = "#98c379",
+				},
+				modified = {
+					fg = "#e5c07b",
+				},
+				removed = {
+					fg = "#e06c75",
+				},
+			},
+			cond = hide_in_width,
+		}
 
-    local diff = {
-      'diff',
-      colored = true,
-      symbols = { added = ' ', modified = ' ', removed = ' ' }, -- changes diff symbols
-      color = {
-        added = {
-           fg = '#98c379'
-        },
-        modified = {
-          fg = '#e5c07b'
-        },
-        removed = {
-          fg = '#e06c75'
-        },
-      },
-      cond = hide_in_width,
-    }
-
-    require('lualine').setup {
-      options = {
-        icons_enabled = true,
-        -- Some useful glyphs:
-        -- https://www.nerdfonts.com/cheat-sheet
-        --        
-        section_separators = { left = '', right = '' },
-        component_separators = { left = '', right = '' },
-        disabled_filetypes = { 'alpha', 'neo-tree', 'Avante' },
-        always_divide_middle = true,
-      },
-      sections = {
-        lualine_a = { mode },
-        lualine_b = { 'branch' },
-        lualine_c = { filename },
-        lualine_x = { diagnostics, diff, { 'encoding', cond = hide_in_width }, { 'filetype', cond = hide_in_width } },
-        lualine_y = { 'location' },
-        lualine_z = { 'progress' },
-      },
-      inactive_sections = {
-        lualine_a = {},
-        lualine_b = {},
-        lualine_c = { { 'filename', path = 1 } },
-        lualine_x = { { 'location', padding = 0 } },
-        lualine_y = {},
-        lualine_z = {},
-      },
-      tabline = {},
-      extensions = { 'fugitive' },
-    }
-  end,
+		require("lualine").setup({
+			options = {
+				icons_enabled = true,
+				theme = "catppuccin",
+				-- Some useful glyphs:
+				-- https://www.nerdfonts.com/cheat-sheet
+				--        
+				section_separators = { left = "", right = "" },
+				component_separators = { left = "", right = "" },
+				disabled_filetypes = { "alpha", "neo-tree", "Avante" },
+				always_divide_middle = true,
+			},
+			sections = {
+				lualine_a = { mode },
+				lualine_b = { "branch" },
+				lualine_c = { filename },
+				lualine_x = {
+					diagnostics,
+					diff,
+					{ "encoding", cond = hide_in_width },
+					{ "filetype", cond = hide_in_width },
+				},
+				lualine_y = { "location" },
+				lualine_z = { "progress" },
+			},
+			inactive_sections = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = { { "filename", path = 1 } },
+				lualine_x = { { "location", padding = 0 } },
+				lualine_y = {},
+				lualine_z = {},
+			},
+			tabline = {},
+			extensions = { "fugitive" },
+		})
+	end,
 }

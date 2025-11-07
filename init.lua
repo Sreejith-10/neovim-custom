@@ -48,6 +48,7 @@ require("lazy").setup({
 	require("plugins.which-key"),
 	require("plugins.mini-surround"),
 	require("plugins.kanagawa"),
+	require("plugins.flash"),
 }, {
 	ui = {
 		-- If you have a Nerd Font, set icons to an empty table which will use the
@@ -87,7 +88,7 @@ local session_file = ".session.vim"
 -- Check if the sessionfile exists in the current directoy
 if file_exists(session_file) then
 	-- Source the session file
-	vim.md("source " .. session_file)
+	vim.cmd("source " .. session_file)
 end
 
 -- The line beneath this is caled `modeline`. See `:help odeline`

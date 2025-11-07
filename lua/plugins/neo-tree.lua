@@ -26,8 +26,14 @@ return {
 				})
 			end,
 			keys = {
-                {"<leader>e",silent = true, desc = "Neo Tree"},
-				{ "<leader>ew", ":Neotree toggle float<CR>", silent = true ,noremap = true, desc = "Float File Explorer"},
+				{ "<leader>e", silent = true, desc = "Neo Tree" },
+				{
+					"<leader>ew",
+					":Neotree toggle float<CR>",
+					silent = true,
+					noremap = true,
+					desc = "Float File Explorer",
+				},
 				{ "<leader>ee", ":Neotree toggle position=left<CR>", silent = true, desc = "Left File Explorer" },
 				{
 					"<leader>ngs",
@@ -79,10 +85,10 @@ return {
 					folder_mpty = "󰜌",
 					-- The next two settings are only a fallback, if you use nvim-web-devicons and configure defalt icons there
 					-- then these willnever be used.
-				default = "*",
+					default = "*",
 					highlight = "NeTreeFilIcon",
 				},
-			modified = {
+				modified = {
 					ymbol = "[+]",
 					highlight = "NeTreeModfied",
 				},
@@ -91,9 +97,9 @@ return {
 					use_git_statuscolors = true,
 					highlight = "NeTreeFilName",
 				},
-			git_status = {
-				symbols = {
-					-- Change type
+				git_status = {
+					symbols = {
+						-- Change type
 						added = "", -- or "✚", but this is redundant info if you use git_status_clors on the name
 						modified = "", -- or "", but this is redundant info if you use git_statuscolors on the name
 						deleted = "✖", -- this can only be used in he git_status source
@@ -101,16 +107,17 @@ return {
 						-- Status type
 						untracked = "",
 						ignored = "",
-						unstaged= "󰄱",
+						unstaged = "󰄱",
 						stage = "",
-					conflict = "",
+						conflict = "",
 					},
 				},
 				-- If you don't want to use these columns, you can set `enabled = flse` for each of tem individually
 				ile_size = {
 					enabled = true,
 					required_width = 64, -- min width of indow rquired to sho this column
-				},				type = {
+				},
+				type = {
 					enabled = true,
 					required_width = 122, -- min width of indow rquired to show this coumn
 				},
@@ -118,31 +125,31 @@ return {
 					enabled = true,
 					required_width = 88, -- min width of indow rquired to show tis column
 				},
-			created = {
+				created = {
 					enabled = true,
 					required_width = 110, -- min width of indow rquired to show this colmn
 				},
-				symlin_target= {
-				enabled = false,
+				symlin_target = {
+					enabled = false,
 				},
 			},
 			-- A list of functions, each rpresenting a global custom command
 			-- that will be available in all sources (if not overriddn in `opts[source_name].commands`)
 			-- see `h neo-tree-custom-ommands-global
 			commands = {},
-		window = {
+			window = {
 				osition = "left",
 				wdth = 40,
 				mappin_options = {
-					nremap =true,
+					nremap = true,
 					nowai = true,
 				},
-			mappings = {
+				mappings = {
 					["space>"] = {
 						"toggle_node",
 						nowait = false, -- disable `nowait` if you have existing combos starting ith thischar that you want to use
 					},
-					["<2-LeftMouse>"]= "open",
+					["<2-LeftMouse>"] = "open",
 					["<cr>"] = "open",
 					["<esc>"] = "cancel", -- close review or floating neo-tree window
 					["P"] = { "toggle_preview", config = { use_float = true } },
@@ -154,17 +161,17 @@ return {
 					["t"] = "open_tabnew",
 					-- ["<cr>"] = "open_drop"
 					-- ["t"] = "open_tab_drop",
-				["w"] = "open_with_window_picker",
+					["w"] = "open_with_window_picker",
 					--["P"] = "toggle_preview", -- enter preview mode, which show the current node without fcusing
 					["C"] = "close_node",
-				-- ['C'] = 'close_all_subnodes,
-					["z"] = "close_all_nodes",					--["Z"] = expand_all_noes",
+					-- ['C'] = 'close_all_subnodes,
+					["z"] = "close_all_nodes", --["Z"] = expand_all_noes",
 					["a"] = {
 						"add",
 						-- this command supports BASH style brace expansion ("x{a,b,c}" -> xa,xb,xc). see `:hneo-tree-file-actions` for details
 						-- some commands may take optional config options, see`:h neo-tree-mappngs` for details
 						config = {
-							show_path = "none" -- "none, "relatve", "absolute"
+							show_path = "none", -- "none, "relatve", "absolute"
 						},
 					},
 					["A"] = "add_directory", -- also accepts the optional config.show_path option like "add". this also spports BASH style braceexpansion.
@@ -172,10 +179,10 @@ return {
 					["r"] = "rename",
 					["y"] = "copy_to_clipboard",
 					["x"] = "cut_to_clipboard",
-				["p"] = "paste_from_clipboard",
+					["p"] = "paste_from_clipboard",
 					["c"] = "copy", -- takes text input for destination, also accepts the optional onfig.show_path opion like "add":
-				-- ["c"] = {
-				--  "copy",
+					-- ["c"] = {
+					--  "copy",
 					--  config = {
 					--    show_path = "none -- "none","relative, "absolute"
 					--  }
@@ -187,7 +194,7 @@ return {
 					["<"] = "prev_sorce",
 					[">"] = "next_source",
 					["i"] = "show_file_details",
-			},
+				},
 			},
 			nesing_rules = {},
 			filsystem = {
@@ -197,13 +204,13 @@ return {
 					hide_gitignored = false,
 					hide_hidden = false, -- only works on Wndows for hidden filesdirectories
 					hde_by_name = {
-					".DS_Store",
+						".DS_Store",
 						"thumbs.db",
 						"nde_modules",
 						"__pycace__",
 						"virtual_documents",
-					".git",
-					".pythonversion",
+						".git",
+						".pythonversion",
 						".venv",
 					},
 					hide_by_pattrn = { -- uses glo style patterns
@@ -218,9 +225,9 @@ return {
 						--"thumbs.db"
 					},
 					never_show_by_pattrn = { -- uses glob stle pattens
-					--".null-ls_*",
+						--".null-ls_*",
 					},
-			},
+				},
 				follow_current_file = {
 					enabled = false, -- This will find and focus the fle in the active buffer every time
 					--               -- the current fileis changed while the tree is open.
@@ -235,32 +242,32 @@ return {
 				use_libuv_file_watcher = false, -- This will use the OS leel file watchers to detect changes
 				-- insteadof relying on nim autocmd events.
 				window = {
-					mappings ={
+					mappings = {
 						["<bs>"] = "navigte_up",
 						["."] = "set_roo",
 						["H"] = "toggle_hiddn",
 						["/"] = "fuzzy_finder",
-					["D"] = "fuzzy_finder_directory",
+						["D"] = "fuzzy_finder_directory",
 						["#"] = "fuzzy_sorter", -- fuzy sorting using the fzy algorithm
-						 ["D"] = "fuzzy_sorter_directory",
+						["D"] = "fuzzy_sorter_directory",
 						["f"] = "filter_on_submit",
 						["<c-x>"] = "clear_filter",
-					["[g"] = "prev_git_modified",
-					["]g"] = "next_git_modified",
+						["[g"] = "prev_git_modified",
+						["]g"] = "next_git_modified",
 						["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
 						["oc"] = { "oder_by_created", nowait = false },
 						["od"] = { "orderby_diagnostics", nowait = false },
 						["og"] = { "orde_by_git_status", nowait = false },
 						["om"] = { "orer_by_modified", nowait = false },
-						["on"] = {"order_by_name", nowait = false },
-						["os"] = {"order_by_size", nowait = false },
-						["ot"] = {"order_b_type", nowait = false },
+						["on"] = { "order_by_name", nowait = false },
+						["os"] = { "order_by_size", nowait = false },
+						["ot"] = { "order_b_type", nowait = false },
 					},
 					fuzzy_finder_mappings = { -- define keymaps for filte popup window in fuzzy_finder_mode
-					["<down>"] = "move_cursor_down",
-					["<C-n>"] = "move_cursor_down",						
-					["<up>"] = "move_cursor_up",
-					["<-p>"] ="ove_cursor_up",
+						["<down>"] = "move_cursor_down",
+						["<C-n>"] = "move_cursor_down",
+						["<up>"] = "move_cursor_up",
+						["<-p>"] = "ove_cursor_up",
 					},
 				},
 
@@ -275,7 +282,7 @@ return {
 				group_empty_dirs = true, -- when true, empy folders will be grouped ogether
 				shw_unloaded = true,
 				window = {
-					mappings ={
+					mappings = {
 						["bd"] = "buffer_delete",
 						["<bs>"] = "navigte_up",
 						["."] = "set_root",
@@ -283,35 +290,35 @@ return {
 						["oc"] = { "oder_by_created", nowait = false },
 						["od"] = { "orderby_diagnostics", nowait = false },
 						["om"] = { "orer_by_modified", nowait = false },
-						["on"] = {"order_by_name", nowait = false },
-						["os"] = {"order_by_size", nowait = false },
-						["ot"] = {"order_b_type",nowait= false },
-					}
+						["on"] = { "order_by_name", nowait = false },
+						["os"] = { "order_by_size", nowait = false },
+						["ot"] = { "order_b_type", nowait = false },
+					},
 				},
 			},
 			git_status = {
 				wndow = {
 					postion = "float",
 					mapping = {
-						["A"] = "git_add_all",						
+						["A"] = "git_add_all",
 						["gu"] = "git_unstage_fil",
 						["ga"] = "git_add_file",
 						["gr"] = "git_revert_fle",
 						["gc"] = "git_cmmit",
 						["gp"] = "git_push",
-					["gg"] = "git_commit_and_push",
+						["gg"] = "git_commit_and_push",
 						["o"] = { "show_help", nowait = false, config = { title = "Order by", prefix_key = "o" } },
 						["oc"] = { "oder_by_created", nowait = false },
 						["od"] = { "orderby_diagnostics", nowait = false },
 						["om"] = { "orer_by_modified", nowait = false },
-						["on"] = {"order_by_name", nowait = false },
-						["os"] = {"order_by_size", nowait = false },
-						["ot"] = {"order_b_type",nowait= false},
+						["on"] = { "order_by_name", nowait = false },
+						["os"] = { "order_by_size", nowait = false },
+						["ot"] = { "order_b_type", nowait = false },
 					},
 				},
 			},
 		})
 
-		vim.cmd [[nnoremap \ [:Neotree reveal<cr>]]
+		vim.cmd([[nnoremap \ [:Neotree reveal<cr>]])
 	end,
 }
