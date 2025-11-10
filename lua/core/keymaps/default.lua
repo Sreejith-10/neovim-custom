@@ -40,7 +40,6 @@ vim.keymap.set("n", "<Down>", ":resize +2<CR>", { noremap = true, silent = true 
 vim.keymap.set("n", "<Left>", ":vertical resize -2<CR>", { noremap = true, silent = true })
 vim.keymap.set("n", "<Right>", ":vertical resize +2<CR>", { noremap = true, silent = true })
 
-
 -- Increment/decrement numbers
 vim.keymap.set("n", "<leader>+", "<C-a>", { noremap = true, silent = true }) -- increment
 vim.keymap.set("n", "<leader>-", "<C-x>", { noremap = true, silent = true }) -- decrement
@@ -110,3 +109,15 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 -- Save and load session
 vim.keymap.set("n", "<leader>ss", ":mksession! .session.vim<CR>", { noremap = true, silent = false })
 vim.keymap.set("n", "<leader>sl", ":source .session.vim<CR>", { noremap = true, silent = false })
+
+-- Diable arrow keys
+-- vim.keymap.set({ "n", "i" }, "<Up>", "<Nop>", { noremap = true, silent = true })
+-- vim.keymap.set({ "n", "i" }, "<Down>", "<Nop>", { noremap = true, silent = true })
+-- vim.keymap.set({ "n", "i" }, "<Left>", "<Nop>", { noremap = true, silent = true })
+-- vim.keymap.set({ "n", "i" }, "<Right>", "<Nop>", { noremap = true, silent = true })
+
+-- Remap HJKL to navigate in insert mode
+-- vim.keymap.set("i", "<C-h>", "<C-o>h", { noremap = true, silent = true })
+-- vim.keymap.set("i", "<C-j>", "<C-o>j", { noremap = true, silent = true })
+-- vim.keymap.set("i", "<C-k>", "<C-o>k", { noremap = true, silent = true })
+-- vim.keymap.set("i", "<C-l>", "<C-o>l", { noremap = true, silent = true })

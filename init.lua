@@ -49,6 +49,7 @@ require("lazy").setup({
 	require("plugins.mini-surround"),
 	require("plugins.kanagawa"),
 	require("plugins.flash"),
+	require("plugins.mini-animate"),
 }, {
 	ui = {
 		-- If you have a Nerd Font, set icons to an empty table which will use the
